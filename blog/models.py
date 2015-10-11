@@ -35,6 +35,9 @@ class Category(models.Model):
 	cat_pos = models.IntegerField(default=7)
 	cat_description  = models.CharField(max_length=400)
 
+	class Meta:
+		verbose_name_plural = "categories"
+
 	def __str__(self):
 		return self.cat_title
 
@@ -42,4 +45,3 @@ class Category(models.Model):
 class Tag(models.Model):
     post = models.ForeignKey(Post, related_name="tags")
     name = models.CharField(max_length=255)
-

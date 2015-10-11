@@ -20,6 +20,9 @@ class LifeinKorea(models.Model):
 	objectId = models.TextField()
 	is_live = models.BooleanField(default=True)
 
+	class Meta:
+		verbose_name_plural = "lifeinkorea"
+
 	def __str__(self):
 		return self.title
 

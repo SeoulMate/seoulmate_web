@@ -22,8 +22,11 @@ class University(models.Model):
 	uni_map = models.TextField(default="")
 	airport_route = models.TextField(default="")
 
-	def __unicode__(self):
-		return self.name_eng + " | " + self.name_kor 
+	class Meta:
+		verbose_name_plural = "Universities"
+
+	def __str__(self):
+		return self.name_eng + " | " + self.name_kor
 
 	def save(self):
 		if not self.id:
