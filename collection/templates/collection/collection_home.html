@@ -1,0 +1,160 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Seoul Mate - Collections</title>
+  <link rel="icon" type="image/png" href="{% static 'landingsite/images/favicon.ico' %}">
+
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <link href="{% static 'landingsite/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- Fb Tags-->
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" /> 
+    <meta property="og:title" content="Seoul Mate - Collections" /> 
+    <meta property="og:site_name" content="Seoul Mate"/>
+    <meta property="article:author" content="https://www.facebook.com/seoulmateapp" />
+    <meta property="og:description" content="Seoul Mate is an information and resource sharing app for International Students in South Korea.Seoul Mate lets you post your question, find friends from your university, and get updates about jobs, internships, scholarships and more. Seoul Mate is the perfect way to keep up with your friends in South Korea. It also provides you with campus maps so that you don't get lost on first day at your university." /> 
+    <meta property="og:image"content="{% static 'landingsite/images/bridge-824609_1280.jpg' %}" 
+    />
+    <meta property="fb:app_id" content="222622874583781" />
+    <meta property="og:url" content="http://seoulmateapp.co/collections/" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49202305-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body>
+  <nav class="teal darken-2" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Collections</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Coming soon"  id="navacolor">Features</a></li>
+        <li><a href="/blog/" id="navacolor">Blog</a></li>
+        <li><a href="/collections" id="navacolor">Collections</a></li>
+        <li><a href="/daehakgyo/" id="navacolor">Universities</a></li>
+        <li><a href="/lifeinkorea/" id="navacolor">Life in Korea</a></li>
+        <li><a href="/resources/" id="navacolor">Resources</a></li>
+        <li><a href="/contact-us/" id="navacolor">Contact us</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="Coming soon" href="#">Features</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/collections">Collections</a></li>
+        <li><a href="/daehakgyo/">Universities</a></li>
+        <li><a href="/lifeinkorea/" >Life in Korea</a></li>
+        <li><a href="/resources/" >Resources</a></li>
+        <li><a href="/contact-us/">Contact us</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </div>
+  </nav>
+  <div class="parallax-container" id="index-banner">
+    <div class="container">
+      <br><br><br><br><br><br>
+      <h1 class="header center white-text">Seoul Mate Collections</h1>
+      <div class="row center">
+        <h5 class="header col s12 text-dark-orange light"><span class="text-dark-orange"></span>Posts grouped by Category</h5>
+      </div>
+      <div class="row center">
+        <a href="#" id="download-button" class="btn-large waves-effect waves-light deep-orange">Check below</a>
+      </div>
+      <br><br>
+
+    </div>
+     <div class="parallax"><img src="{% static 'landingsite/images/fireworks-656248_1280.jpg' %}"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+      {% if posts %}
+      {% for post in posts %}
+        <div class="col s12 m4">
+          <div class="card" style="height:415px;">
+            <div class="card-image" >
+              <img height="200" src="{{ post.thumb }}">
+            </div>
+            <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4 truncate" style="font-size: 21px;">{{ post.title}}</span>
+            <p><a  class="deep-orange-text" href="/collections/board/{{ post.objectId }}">Read more</a></p>
+            </div>
+            <div class="card-action">
+              <a style="color: #ff4081;" href="#"><span class="teal-text text-accent-3"> 
+              {% for k, v in categories.items %}
+              {% if k = post.category %}
+                {{ v }}
+                {% endif %}
+                {% endfor %}
+              </span></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3>No posts are available.</h3>
+        {% endif %}
+      </div>
+    </div>
+    <br><br>
+    <div class="section">
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+           <h5 class="white-text">About us</h5>
+          <p class="grey-text text-lighten-4">Seoul Mate is an information and resource sharing app for International Students in South Korea.Seoul Mate lets you post your question, find friends from your university, and get updates about jobs, internships, scholarships and more. Seoul Mate is the perfect way to keep up with your friends in South Korea. It also provides you with campus maps so that you don't get lost on first day at your university.</p>
+        </div>
+        <div class="col l3 s12">
+         <h5 class="white-text">Important Links</h5>
+          <ul>
+            <li><a class="white-text" href="/blog/">Blog</a></li>
+            <li><a class="white-text" href="/collections/">Collections</a></li>
+            <li><a class="white-text" href="#!">Features</a></li>
+            <li><a class="black-text" href="end-user-license-agreement/">End User License Agreement</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="https://twitter.com/seoulmate_me">Twitter</a></li>
+            <li><a class="white-text" href="https://github.com/seoulmate">Github</a></li>
+            <li><a class="white-text" href="https://medium.com/seoul-mate-blog">Medium</a></li>
+            <li><a class="white-text" href="https://www.linkedin.com/company/3662789">Linkedin</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made with <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      and <a class="yellow-text text-darken-4" 
+       href="http://djangoproject.com">Django</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+  <script src="{% static 'landingsite/js/init.js' %}"></script>
+
+  </body>
+</html>

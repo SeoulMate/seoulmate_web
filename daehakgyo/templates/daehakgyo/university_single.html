@@ -1,0 +1,187 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>{{ uni.name_eng }}</title>
+  <link rel="icon" type="image/png" href="{% static 'landingsite/images/favicon.ico' %}">
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <link href="{% static 'landingsite/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <meta property="og:title" content="{{ uni.name_eng }}" />
+  <meta property="og:description" content="{{ uni.intro }}" />
+  <meta property="og:image"content="http://seoulmateapp.co{{ uni.uni_photo_banner.url }}" 
+    />
+   <meta property="fb:app_id" content="222622874583781" />
+  <meta property="og:url" content="http://seoulmateapp.co/daehakgyo/{{ uni.uni_slug }}" />
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49202305-2', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+</head>
+<body>
+<div id="fb-root"></div>
+{% block js %}
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '222622874583781',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+{% endblock js %}
+  <nav class="teal darken-2" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/daehakgyo/" class="brand-logo">Universities</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/"><i class="material-icons">home</i></a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/">Home</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </div>
+  </nav>
+  <!-- <div class="parallax-container" id="index-banner"> -->
+      {% if uni.uni_photo_banner %} 
+      <div class="section teal" style="background-image: url({{ uni.uni_photo_banner.url }});">
+              {% else %}
+      <div class="section teal">
+        {% endif %}
+        <div class="row center" >
+          <div class="col s12 m8 l8 offset-m2 offset-l2">
+           <br><br>
+          <h3 class="grey-text text-darken-4">{{ uni.name_eng }} {{ uni.name_kor }}</h3>
+          <br><br> <br><br><br><br>
+          <!-- <p class="grey-text text-darken-3">{{ uni.intro }}</p> -->
+          </div>
+        </div>
+      </div>
+      <div class="container">
+      <div class="row">
+      <br><br>
+        <div class="col s12 m4 l4">
+           <ul class="collection with-header">
+        <li class="collection-header"><h4>Information</h4></li>
+        <li class="collection-item"><div>Rank : {{ uni.rank }}<a href="http://www.usnews.com/education/best-global-universities/south-korea" target="_blank" class="secondary-content deep-purple-text text-accent-2"><i class="material-icons">star</i></a></div></li>
+        {% if uni.admission_open %}
+        <li class="collection-item"><div>Admission Open<a href="#!" class="secondary-content deep-purple-text text-accent-2"><i class="material-icons">event_available</i></a></div></li>
+        {% else %}
+         <li class="collection-item"><div>Admission Closed<a href="#!" class="secondary-content deep-purple-text text-accent-2"><i class="material-icons">event_busy</i></a></div></li>
+        {% endif %}
+   <!--      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li> -->
+        <li class="collection-item"><div>University link<a href="{{ uni.link }}" class="secondary-content deep-purple-text text-accent-2"><i class="material-icons">link</i></a></div></li>
+      </ul>
+        </div>
+         <div class="col s12 m8 l8">
+         <h5>Introduction:</h5>
+          <h6 style="line-height: 140%;">{{ uni.intro }}</h6>
+          <h5>How to get there:</h5>
+          <p>{{ uni.airport_route|safe}}</p>
+         </div>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+          <div class="row">
+          <div class="col s12 m12 l12">
+          <div class="video-container">
+            {{ uni.uni_map|safe }}
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large deep-purple accent-2">
+      <i class="large material-icons">share</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating blue darken-1" 
+      href="https://www.linkedin.com/shareArticle?mini=true&url=http://seoulmateapp.co/daehakgyo/{{uni.uni_slug}}&title={{ post.title|urlencode }}&summary={{ post.content|urlencode }}&source=Seoul%20Mate"
+      ><i class="fa  fa-linkedin  fa-2x" style="color:#fff;"></i></a></li>
+      <li><a class="btn-floating light-blue darken-4" href="" onclick="fbshare()"><i class="fa  fa-facebook  fa-2x"></i></a></li>
+      <li><a class="btn-floating light-blue accent-3" href="https://twitter.com/intent/tweet?text={{uni.name_eng|urlencode}}&url={{ 'http://seoulmateapp.co/daehakgyo/'|urlencode:''}}{{ uni.uni_slug|urlencode:''}}&via=seoulmate_me"><i class="fa  fa-twitter  fa-2x"></i></a></li>
+      <li><a class="btn-floating red darken-2" href="https://plus.google.com/share?url={{ 'http://seoulmateapp.co/daehakgyo/'|urlencode:''}}{{ uni.uni_slug|urlencode:''}}"><i class="fa fa-google-plus fa-2x"></i></a></li>
+    </ul>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+           <h5 class="white-text">About us</h5>
+          <p class="grey-text text-lighten-4">Seoul Mate is an information and resource sharing app for International Students in South Korea.Seoul Mate lets you post your question, find friends from your university, and get updates about jobs, internships, scholarships and more. Seoul Mate is the perfect way to keep up with your friends in South Korea. It also provides you with campus maps so that you don't get lost on first day at your university.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="white-text" href="/blog/latest">Blog</a></li>
+            <li><a class="white-text" href="#!">MOOC Circle</a></li>
+            <li><a class="white-text" href="#!">Seoul Mate</a></li>
+            <li><a class="white-text" href="end-user-license-agreement/">End User License Agreement</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="https://twitter.com/seoulmateme">Twitter</a></li>
+            <li><a class="white-text" href="https://github.com/seoulmate">Github</a></li>
+            <li><a class="white-text" href="https://medium.com/seoul-mate-blog">Medium</a></li>
+            <li><a class="white-text" href="https://www.linkedin.com/company/3662789">Linkedin</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made with <a class="orange-text text-lighten-3" 
+      href="http://materializecss.com">Materialize</a> and
+       <a class="teal-text text-darken-4" 
+       href="http://djangoproject.com">Django</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+    function fbshare(){
+        FB.ui({
+          method: 'share',
+          href: 'http://seoulmateapp.co/daehakgyo/{{ uni.uni_slug }}',
+          picture: 'http://seoulmateapp.co{{ uni.uni_photo_banner.url }}',
+          caption: '{{ uni.name_eng }}',
+        }, function(response){});
+    }
+</script>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+ <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+  <script src="{% static 'landingsite/js/init.js' %}"></script>
+
+  </body>
+</html>
