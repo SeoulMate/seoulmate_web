@@ -1,6 +1,9 @@
 Seoul Mate Website
 ---
 
+<img src="files/seoulmate_tile_dark.png" alt="Seoul Mate"/> 
+
+
 Setting up your local environment
 -----
 
